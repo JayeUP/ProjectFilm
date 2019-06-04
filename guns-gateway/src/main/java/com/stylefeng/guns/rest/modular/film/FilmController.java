@@ -2,6 +2,8 @@ package com.stylefeng.guns.rest.modular.film;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.stylefeng.guns.rest.film.FilmService;
+import com.stylefeng.guns.rest.vo.FilmRequestVO;
+import com.stylefeng.guns.rest.vo.ResponseVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,5 +40,14 @@ public class FilmController {
                                    @RequestParam(value = "yearId",required = false,defaultValue = "99")String yearId){
 
         return null;
+    }
+
+    @RequestMapping(value = "/getFilm", method = RequestMethod.GET)
+    public ResponseVO getFilms(FilmRequestVO filmRequestVO) {
+        switch (filmRequestVO.getShowType()) {
+            case 1:
+
+        }
+        return new ResponseVO();
     }
 }
