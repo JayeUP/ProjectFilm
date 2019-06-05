@@ -2,6 +2,7 @@ package com.stylefeng.guns.rest.modular.film;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.stylefeng.guns.rest.film.FilmService;
+import com.stylefeng.guns.rest.film.vo.FilmVO;
 import com.stylefeng.guns.rest.vo.FilmRequestVO;
 import com.stylefeng.guns.rest.vo.ResponseVO;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,10 +45,36 @@ public class FilmController {
 
     @RequestMapping(value = "/getFilm", method = RequestMethod.GET)
     public ResponseVO getFilms(FilmRequestVO filmRequestVO) {
-        switch (filmRequestVO.getShowType()) {
-            case 1:
+        String img_pre = null;
 
+        // 接收要返回的影片的封装数据
+        FilmVO filmVO = null;
+
+        // 根据showType判断影片查询类型
+        switch (filmRequestVO.getShowType()) {
+            // 1-正在热映
+            case 1:
+                filmVO = filmService.getHotFilms(filmRequestVO.getNowPage(), filmRequestVO.getPageSize(),
+                        filmRequestVO.getSortId(), filmRequestVO.getCatId(), filmRequestVO.getSourceId(),
+                        filmRequestVO.getYearId());
+                break;
+            case 2:
+                filmVO = filmService.getSoonFilms(filmRequestVO.getNowPage(), filmRequestVO.getPageSize(),
+                        filmRequestVO.getSortId(), filmRequestVO.getCatId(), filmRequestVO.getSourceId(),
+                        filmRequestVO.getYearId());
+                break;
+            case 3:
+                filmVO = filmService.getClassicFilms(filmRequestVO.getNowPage(), filmRequestVO.getPageSize(),
+                        filmRequestVO.getSortId(), filmRequestVO.getCatId(), filmRequestVO.getSourceId(),
+                        filmRequestVO.getYearId());
+                break;
+            default:
+                filmVO = filmService.getHotFilms(filmRequestVO.getNowPage(), filmRequestVO.getPageSize(),
+                        filmRequestVO.getSortId(), filmRequestVO.getCatId(), filmRequestVO.getSourceId(),
+                        filmRequestVO.getYearId());
+                break;
         }
-        return new ResponseVO();
+
+        return ResponseVO.success(filmVO.getNowPage(), filmVO.getTotalPage(), img_pre, filmVO.getFilmInfo());
     }
 }
