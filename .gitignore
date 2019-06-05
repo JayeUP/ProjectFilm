@@ -33,4 +33,4 @@ hs_err_pid*
 .settings/
 
 #配置文件
-application.yaml
+*/application.yaml

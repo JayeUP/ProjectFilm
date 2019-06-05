@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/hello")
 public class ExampleController {
 
-    @RequestMapping("")
+    @RequestMapping("/ok")
     public ResponseEntity hello(@RequestBody SimpleObject simpleObject) {
         System.out.println(simpleObject.getUser());
         return ResponseEntity.ok("请求成功!");
