@@ -19,4 +19,70 @@
         <result column="film_status" property="filmStatus" />
     </resultMap>
 
+    <select id="getTop100" resultType="com.stylefeng.guns.rest.film.vo.FilmInfo">
+        select
+        UUID as filmId,
+        img_address as imgAddress,
+        film_name as filmName,
+        film_score as score
+        from mtime_film_t
+        ORDER BY film_score DESC
+        LIMIT 100
+    </select>
+    <select id="getExpectRanking" resultType="com.stylefeng.guns.rest.film.vo.FilmInfo">
+        select
+        UUID as filmId,
+        img_address as imgAddress,
+        film_name as filmName,
+        film_preSaleNum as expectNum
+        from mtime_film_t
+        ORDER BY film_preSaleNum DESC
+        /*LIMIT 100*/
+    </select>
+    <select id="getBoxRanking" resultType="com.stylefeng.guns.rest.film.vo.FilmInfo">
+        select
+        UUID as filmId,
+        img_address as imgAddress,
+        film_name as filmName,
+        film_box_office as boxNum
+        from mtime_film_t
+        ORDER BY film_box_office DESC
+        /*LIMIT 100*/
+    </select>
+    <select id="getHotFilmsNum" resultType="java.lang.Integer">
+        select
+        count(1)
+        from mtime_film_t
+        where film_score > 8
+    </select>
+    <select id="getHotFilms" resultType="com.stylefeng.guns.rest.film.vo.FilmInfo">
+        select
+        UUID as filmId,
+        film_type as filmType,
+        img_address as imgAddress,
+        film_name as filmName,
+        film_score as filmScore
+        from mtime_film_t
+        where film_score > 8
+        ORDER BY film_score DESC
+
+    </select>
+    <select id="getSoonFilmsNum" resultType="java.lang.Integer">
+        select
+        count(1)
+        from mtime_film_t
+        where film_time > now()
+    </select>
+    <select id="getSoonFilms" resultType="com.stylefeng.guns.rest.film.vo.FilmInfo">
+        select
+        UUID as filmId,
+        film_type as filmType,
+        img_address as imgAddress,
+        film_name as filmName,
+        film_preSaleNum as expectNum,
+        film_time as showTime
+        from mtime_film_t
+        where film_time > now()
+    </select>
+
 </mapper>

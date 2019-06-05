@@ -2,6 +2,7 @@ package com.stylefeng.guns.rest.film.vo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * 2019/6/4 23:42
  */
 @Data
-public class FilmVO {
+public class FilmVO implements Serializable {
 
     private int filmNum;
     // 影片列表当前页
