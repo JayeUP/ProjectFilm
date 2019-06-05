@@ -2,12 +2,14 @@ package com.stylefeng.guns.rest.film.vo;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by HorseXInsect
  * 2019/6/5 14:37
  */
 @Data
-public class FilmInfo {
+public class FilmInfo implements Serializable {
     private String filmId;
     private int filmType;
     private String imgAddress;
