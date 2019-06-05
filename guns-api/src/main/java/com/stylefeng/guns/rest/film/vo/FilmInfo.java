@@ -18,7 +18,7 @@ public class FilmInfo {
     private int expectNum;
     private String showTime;
     private int boxNum;
-    // 评分人数，以万为单位
+    //
     private String score;
 
 }
