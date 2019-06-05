@@ -1,6 +1,8 @@
-package com.stylefeng.guns.rest.vo;
+package com.stylefeng.guns.rest.film.vo;
 
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * Created by HorseXInsect
@@ -15,6 +17,6 @@ public class FilmVO {
     // 总页数
     private int totalPage;
     // 电影信息
-    private List<FilmInfo> filmInfoList;
+    private List<FilmInfo> filmInfo;
 
 }
