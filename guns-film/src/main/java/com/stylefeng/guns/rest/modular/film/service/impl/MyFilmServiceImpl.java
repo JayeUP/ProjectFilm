@@ -96,4 +96,19 @@ public class MyFilmServiceImpl implements FilmService {
         List<YearVO> years = yearMapper.getYears();
         return years;
     }
+
+    @Override
+    public FilmVO getHotFilms(int nowPage, int pageSize, int sortId, int catId, int sourceId, int yearId) {
+        return null;
+    }
+
+    @Override
+    public FilmVO getSoonFilms(int nowPage, int pageSize, int sortId, int catId, int sourceId, int yearId) {
+        return null;
+    }
+
+    @Override
+    public FilmVO getClassicFilms(int nowPage, int pageSize, int sortId, int catId, int sourceId, int yearId) {
+        return null;
+    }
 }
