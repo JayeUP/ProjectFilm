@@ -9,7 +9,6 @@ jwt:
   auth-path: auth         #认证请求的路径
   md5-key: randomKey      #md5加密混淆key
 
-
 server:
   port: 8086 #项目端口
 
@@ -28,22 +27,14 @@ mybatis-plus:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
 
 spring:
-  application:
-    name: user-service
-  dubbo:
-    server: true
-    registry: zookeeper://localhost:2181
-    protocol:
-      name: dubbo
-      port: 20886
-#  datasource:
-#      url: jdbc:mysql://127.0.0.1:3306/meetingfilm?serverTimezone=GMT&autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false
-#      username: root
-#      password: 4444
-#      filters: log4j,wall,mergeStat
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/meetingfilm?serverTimezone=GMT&autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false
+      username: root
+      password: 4444
+      filters: log4j,wall,mergeStat
 
 logging:
   level.root: info
   level.com.stylefeng: debug
   path: logs/
-  file: guns-rest.log
+  file: guns-user.log

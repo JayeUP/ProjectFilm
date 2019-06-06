@@ -1,5 +1,21 @@
+/*
+ Navicat MySQL Data Transfer
+
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 50721
+ Source Host           : localhost:3306
+ Source Schema         : guns_rest
+
+ Target Server Type    : MySQL
+ Target Server Version : 50721
+ File Encoding         : 65001
+
+ Date: 26/01/2018 21:16:47
+*/
+
 -- ----------------------------
--- Table structure for mtime_user_t
+-- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS mtime_user_t;
 CREATE TABLE mtime_user_t(
@@ -20,8 +36,9 @@ CREATE TABLE mtime_user_t(
 ) COMMENT '用户表' ENGINE = INNODB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of mtime_user_t
+-- Records of user
 -- ----------------------------
 insert into mtime_user_t(user_name,user_pwd,nick_name,user_sex,birthday,email,user_phone,address,head_url,life_state,biography) values('admin','0192023a7bbd73250516f069df18b500','隔壁泰山',0,'2018-07-31','admin@mtime.com','13888888888','北京市海淀区朝阳北路中南海国宾馆','films/img/head-img.jpg',0,'没有合适的伞，我宁可淋着雨');
 insert into mtime_user_t(user_name,user_pwd,nick_name,user_sex,birthday,email,user_phone,address,head_url,life_state,biography) values('jiangzh','5e2de6bd1c9b50f6e27d4e55da43b917','阿里郎',0,'2018-08-20','jiangzh@mtime.com','13866666666','北京市朝阳区大望路万达广场','films/img/head-img.jpg',1,'我喜欢隔壁泰山');
+
 
