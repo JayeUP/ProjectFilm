@@ -1,7 +1,7 @@
-package com.stylefeng.guns.rest.user;
+package com.stylefeng.guns.api.user;
 
-import com.stylefeng.guns.rest.user.model.UserInfoModel;
-import com.stylefeng.guns.rest.user.model.UserModel;
+import com.stylefeng.guns.api.user.model.MtimeUserT;
+import com.stylefeng.guns.api.user.model.UserInfoModel;
 
 /**
  * @author Nemo
@@ -9,11 +9,11 @@ import com.stylefeng.guns.rest.user.model.UserModel;
  * @date 2019/6/6
  */
 
-public interface UserServiceAPI {
+public interface UserService {
 
     public boolean login(String username, String password);
 
-    public boolean register(UserModel userModel);
+    public boolean register(MtimeUserT user);
 
     public boolean checkUsername(String username);
 

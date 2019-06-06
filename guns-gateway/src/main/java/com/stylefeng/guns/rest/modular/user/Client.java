@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.modular.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.stylefeng.guns.rest.user.UserServiceAPI;
+import com.stylefeng.guns.api.user.UserService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Client {
 
-    @Reference(interfaceClass = UserServiceAPI.class)
-    private UserServiceAPI userServiceAPI;
+    @Reference(interfaceClass = UserService.class)
+    private UserService userService;
 
     public void run() {
-        userServiceAPI.login("admin", "password");
+        userService.login("admin", "password");
     }
 }

@@ -1,9 +1,12 @@
 package com.stylefeng.guns.rest.persistence.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.stylefeng.guns.rest.user.UserServiceAPI;
-import com.stylefeng.guns.rest.user.model.UserInfoModel;
-import com.stylefeng.guns.rest.user.model.UserModel;
+import com.stylefeng.guns.api.user.UserService;
+import com.stylefeng.guns.api.user.model.MtimeUserT;
+import com.stylefeng.guns.api.user.model.UserInfoModel;
+import com.stylefeng.guns.core.util.MD5Util;
+import com.stylefeng.guns.api.persistence.dao.MtimeUserTMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,21 +15,41 @@ import org.springframework.stereotype.Component;
  * @date 2019/6/6
  */
 @Component
-@Service(interfaceClass = UserServiceAPI.class)
-public class UserServiceImpl implements UserServiceAPI {
+@Service(interfaceClass = UserService.class)
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private MtimeUserTMapper userMapper;
+
     @Override
     public boolean login(String username, String password) {
-        System.out.println("this is user service implement! " + username + " " + password);
         return false;
     }
 
     @Override
-    public boolean register(UserModel userModel) {
+    public boolean register(MtimeUserT user) {
+        // 注册成功返回true, 否则返回false
+
+        // MD5加密密码
+        String password = user.getUserPwd();
+        String encrypt = MD5Util.encrypt(password);
+        user.setUserPwd(encrypt);
+
+
+
+        Integer insert = userMapper.insert(user);
+
         return false;
     }
 
     @Override
     public boolean checkUsername(String username) {
+        // 存在返回true, 可用返回false
+
+        if (username != null && !"".equals(username)) {
+            int i = userMapper.findByUsername(username);
+            return i != 0;
+        }
         return false;
     }
 
