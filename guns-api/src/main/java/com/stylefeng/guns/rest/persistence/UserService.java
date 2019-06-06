@@ -1,7 +1,7 @@
-package com.stylefeng.guns.api.user;
+package com.stylefeng.guns.rest.persistence;
 
-import com.stylefeng.guns.api.user.model.MtimeUserT;
-import com.stylefeng.guns.api.user.model.UserInfoModel;
+import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
+import com.stylefeng.guns.rest.persistence.model.UserInfoModel;
 
 /**
  * @author Nemo

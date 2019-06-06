@@ -1,4 +1,4 @@
-package com.stylefeng.guns.api.user.model;
+package com.stylefeng.guns.rest.persistence.model;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;

@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.persistence.dao;
 
-import com.stylefeng.guns.api.persistence.model.MtimeUserT;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
 import org.apache.ibatis.annotations.Param;
 
 /**

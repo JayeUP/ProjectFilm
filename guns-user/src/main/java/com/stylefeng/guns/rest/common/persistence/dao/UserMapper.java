@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.common.persistence.dao;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.stylefeng.guns.api.common.persistence.model.User;
+import com.stylefeng.guns.rest.common.persistence.model.User;
 
 /**
  * <p>
@@ -13,5 +13,4 @@ import com.stylefeng.guns.api.common.persistence.model.User;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    int findByUsername(String username);
 }

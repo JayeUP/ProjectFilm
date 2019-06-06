@@ -1,11 +1,11 @@
 package com.stylefeng.guns.rest.persistence.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.stylefeng.guns.api.user.UserService;
-import com.stylefeng.guns.api.user.model.MtimeUserT;
-import com.stylefeng.guns.api.user.model.UserInfoModel;
+import com.stylefeng.guns.rest.persistence.UserService;
+import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
+import com.stylefeng.guns.rest.persistence.model.UserInfoModel;
 import com.stylefeng.guns.core.util.MD5Util;
-import com.stylefeng.guns.api.persistence.dao.MtimeUserTMapper;
+import com.stylefeng.guns.rest.persistence.dao.MtimeUserTMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

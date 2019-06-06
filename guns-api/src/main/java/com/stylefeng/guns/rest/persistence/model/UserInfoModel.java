@@ -1,4 +1,4 @@
-package com.stylefeng.guns.api.user.model;
+package com.stylefeng.guns.rest.persistence.model;
 
 /**
  * @author Nemo

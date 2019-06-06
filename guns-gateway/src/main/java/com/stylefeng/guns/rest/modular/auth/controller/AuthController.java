@@ -7,7 +7,7 @@ import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthRequest;
 import com.stylefeng.guns.rest.modular.auth.controller.dto.AuthResponse;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
 import com.stylefeng.guns.rest.modular.auth.validator.IReqValidator;
-import com.stylefeng.guns.rest.user.UserServiceAPI;
+import com.stylefeng.guns.rest.persistence.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +30,8 @@ public class AuthController {
     @Resource(name = "simpleValidator")
     private IReqValidator reqValidator;
 
-    @Reference(interfaceClass = UserServiceAPI.class)
-    private UserServiceAPI userServiceAPI;
+    @Reference(interfaceClass = UserService.class)
+    private UserService userServiceAPI;
 
     @RequestMapping(value = "${jwt.auth-path}")
     public ResponseEntity<?> createAuthenticationToken(AuthRequest authRequest) {

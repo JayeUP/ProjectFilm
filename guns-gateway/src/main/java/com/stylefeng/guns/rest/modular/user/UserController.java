@@ -1,8 +1,8 @@
 package com.stylefeng.guns.rest.modular.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.stylefeng.guns.api.user.UserService;
-import com.stylefeng.guns.api.user.model.MtimeUserT;
+import com.stylefeng.guns.rest.persistence.UserService;
+import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

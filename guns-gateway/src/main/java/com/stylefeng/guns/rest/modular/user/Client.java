@@ -1,7 +1,7 @@
 package com.stylefeng.guns.rest.modular.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.stylefeng.guns.api.user.UserService;
+import com.stylefeng.guns.rest.persistence.UserService;
 import org.springframework.stereotype.Component;
 
 /**
