@@ -2,6 +2,7 @@ package com.stylefeng.guns.rest.persistence;
 
 import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
 import com.stylefeng.guns.rest.persistence.model.UserInfoModel;
+import com.stylefeng.guns.rest.persistence.model.UserModel;
 
 /**
  * @author Nemo
@@ -13,7 +14,7 @@ public interface UserService {
 
     public boolean login(String username, String password);
 
-    public boolean register(MtimeUserT user);
+    public boolean register(UserModel user);
 
     public boolean checkUsername(String username);
 

@@ -6,6 +6,7 @@ import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
 import com.stylefeng.guns.rest.persistence.model.UserInfoModel;
 import com.stylefeng.guns.core.util.MD5Util;
 import com.stylefeng.guns.rest.persistence.dao.MtimeUserTMapper;
+import com.stylefeng.guns.rest.persistence.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,19 +28,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean register(MtimeUserT user) {
+    public boolean register(UserModel user) {
         // 注册成功返回true, 否则返回false
 
         // MD5加密密码
-        String password = user.getUserPwd();
+        String password = user.getPassword();
         String encrypt = MD5Util.encrypt(password);
-        user.setUserPwd(encrypt);
+        user.setPassword(encrypt);
 
+        MtimeUserT mtimeUserT = new MtimeUserT();
+        mtimeUserT.setUserName(user.getUsername());
+        mtimeUserT.setUserPwd(user.getPassword());
+        mtimeUserT.setEmail(user.getEmail());
+        mtimeUserT.setUserPhone(user.getPhone());
+        mtimeUserT.setAddress(user.getAddress());
 
+        Integer insert = userMapper.insert(mtimeUserT);
 
-        Integer insert = userMapper.insert(user);
-
-        return false;
+        return insert != 0;
     }
 
     @Override

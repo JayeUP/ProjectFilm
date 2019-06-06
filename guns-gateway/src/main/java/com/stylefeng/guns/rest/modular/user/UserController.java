@@ -3,6 +3,7 @@ package com.stylefeng.guns.rest.modular.user;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.stylefeng.guns.rest.persistence.UserService;
 import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
+import com.stylefeng.guns.rest.persistence.model.UserModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,13 +44,13 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public Map register(MtimeUserT user) {
+    public Map register(UserModel user) {
         HashMap map = new HashMap();
 
-        String username = user.getUserName();
+        String username = user.getUsername();
         boolean check = userService.checkUsername(username);
 
-        String password = user.getUserPwd();
+        String password = user.getPassword();
 
         if (!check && password!=null && !"".equals(password)) {
             boolean register = userService.register(user);
