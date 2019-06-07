@@ -20,6 +20,22 @@
         <result column="update_time" property="updateTime" />
     </resultMap>
 
+    <resultMap id="UserInfoMap" type="com.stylefeng.guns.rest.persistence.model.UserInfoModel">
+        <id column="UUID" property="uuid"/>
+        <result column="user_name" property="username"/>
+        <result column="nick_name" property="nickname"/>
+        <result column="user_sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <result column="email" property="email"/>
+        <result column="user_phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="head_url" property="headAddress"/>
+        <result column="biography" property="biography"/>
+        <result column="life_state" property="lifeState"/>
+        <result column="begin_time" property="createTime"/>
+        <result column="update_time" property="updatetime"/>
+    </resultMap>
+
 
     <select id="findByUsername" resultType="_int">
         select count(*)
@@ -29,6 +45,23 @@
 
     <select id="findUserByUsernameAndPassWord" resultMap="BaseResultMap">
         select * from mtime_user_t where  user_name=#{username} and user_pwd=#{password}
+    </select>
+
+    <select id="findByUUID" resultMap="UserInfoMap">
+        select UUID,
+        user_name,
+        nick_name,
+        user_sex,
+        birthday,
+        email,
+        user_phone,
+        address,
+        head_url,
+        biography,
+        life_state,
+        begin_time,
+        update_time
+        from mtime_user_t where UUID=#{uuid}
     </select>
 
 </mapper>

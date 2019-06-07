@@ -1,6 +1,9 @@
 package com.stylefeng.guns.rest.persistence.service;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSONObject;
+import com.stylefeng.guns.rest.config.properties.JwtProperties;
+import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
 import com.stylefeng.guns.rest.persistence.UserService;
 import com.stylefeng.guns.rest.persistence.model.MtimeUserT;
 import com.stylefeng.guns.rest.persistence.model.UserInfoModel;
@@ -9,6 +12,9 @@ import com.stylefeng.guns.rest.persistence.dao.MtimeUserTMapper;
 import com.stylefeng.guns.rest.persistence.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Nemo
@@ -61,7 +67,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfoModel getUserInfo(int uuid) {
-        return null;
+
+
+        UserInfoModel userInfo = userMapper.findByUUID(uuid);
+
+        if (userInfo != null) {
+            return userInfo;
+        } else {
+            return null;
+        }
     }
 
     @Override
