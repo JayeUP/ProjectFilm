@@ -16,6 +16,9 @@ public class ResponseVO<D> {
     private D data;
     // 返回获取到的信息
 
+    //返回信息
+    private String msg;
+
     // 分页
     private int nowPage;
     private int totalPage;
@@ -30,6 +33,28 @@ public class ResponseVO<D> {
         responseVO.setImgPre(imgPre);
         responseVO.setTotalPage(totalPage);
         responseVO.setNowPage(nowPage);
+        return responseVO;
+    }
+
+    /**
+     * 业务异常返回的消息
+     */
+    public static <D> ResponseVO serviceFail(String msg){
+        ResponseVO responseVO = new ResponseVO();
+        responseVO.setStatus(1);
+        responseVO.setMsg(msg);
+        return responseVO;
+    }
+
+    /**
+     * 业务成功响应的消息
+     */
+    public static<D> ResponseVO success(String imgPre,D d){
+        ResponseVO responseVO = new ResponseVO();
+        responseVO.setStatus(0);
+        responseVO.setData(d);
+        responseVO.setImgPre(imgPre);
+
         return responseVO;
     }
 }
