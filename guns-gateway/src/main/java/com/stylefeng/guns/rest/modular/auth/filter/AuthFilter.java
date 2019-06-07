@@ -2,6 +2,7 @@ package com.stylefeng.guns.rest.modular.auth.filter;
 
 import com.stylefeng.guns.core.base.tips.ErrorTip;
 import com.stylefeng.guns.core.util.RenderUtil;
+import com.stylefeng.guns.rest.common.CurrentUser;
 import com.stylefeng.guns.rest.common.exception.BizExceptionEnum;
 import com.stylefeng.guns.rest.config.properties.JwtProperties;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
@@ -39,10 +40,39 @@ public class AuthFilter extends OncePerRequestFilter {
             chain.doFilter(request, response);
             return;
         }
+
+
+        /*//忽略列表
+        String ignoreUrl = jwtProperties.getIgnoreurl();
+        String[] ignoreUrls = ignoreUrl.split(",");
+        for(int i=0;i<ignoreUrls.length;i++){
+            if(request.getServletPath().startsWith(ignoreUrls[i])){
+                chain.doFilter(request, response);
+                return;
+            }
+        }*/
+
+
         final String requestHeader = request.getHeader(jwtProperties.getHeader());
         String authToken = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
             authToken = requestHeader.substring(7);
+
+
+            // System.out.println("AuthFilter");
+
+            // 通过Token获取UUID，并且将之存入ThreadLocal，以便后续业务调用
+            String uuid = jwtTokenUtil.getUsernameFromToken(authToken);
+
+            // System.out.println(uuid);
+
+            if (uuid == null) {
+                // 失败
+                return ;
+            } else {
+                CurrentUser.saveUUID(uuid);
+            }
+
 
             //验证token是否过期,包含了验证jwt是否正确
             try {

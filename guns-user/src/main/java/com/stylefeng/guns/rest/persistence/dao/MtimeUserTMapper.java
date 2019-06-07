@@ -16,4 +16,5 @@ public interface MtimeUserTMapper extends BaseMapper<MtimeUserT> {
 
     int findByUsername(@Param("username") String username);
 
+    MtimeUserT findUserByUsernameAndPassWord(@Param("username") String userName, @Param("password") String credenceCode);
 }

@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
     private MtimeUserTMapper userMapper;
 
     @Override
-    public boolean login(String username, String password) {
-        return false;
+    public int login(String username, String password) {
+        return 3;
     }
 
     @Override
@@ -67,5 +67,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfoModel updateUserInfo(UserInfoModel userInfoModel) {
         return null;
+    }
+
+    @Override
+    public MtimeUserT findUserByUsernameAndPassWord(String userName, String credenceCode) {
+        credenceCode = MD5Util.encrypt(credenceCode);
+
+        return userMapper.findUserByUsernameAndPassWord(userName, credenceCode);
     }
 }

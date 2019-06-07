@@ -27,4 +27,8 @@
         where user_name = #{username}
     </select>
 
+    <select id="findUserByUsernameAndPassWord" resultMap="BaseResultMap">
+        select * from mtime_user_t where  user_name=#{username} and user_pwd=#{password}
+    </select>
+
 </mapper>

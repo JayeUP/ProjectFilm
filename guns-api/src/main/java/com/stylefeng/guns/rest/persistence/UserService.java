@@ -12,7 +12,7 @@ import com.stylefeng.guns.rest.persistence.model.UserModel;
 
 public interface UserService {
 
-    public boolean login(String username, String password);
+    public int login(String username, String password);
 
     public boolean register(UserModel user);
 
@@ -21,4 +21,6 @@ public interface UserService {
     UserInfoModel getUserInfo(int uuid);
 
     UserInfoModel updateUserInfo(UserInfoModel userInfoModel);
+
+    MtimeUserT findUserByUsernameAndPassWord(String userName, String credenceCode);
 }
