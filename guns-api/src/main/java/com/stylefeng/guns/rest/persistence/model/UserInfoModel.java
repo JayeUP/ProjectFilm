@@ -13,14 +13,14 @@ import java.util.Date;
 @Data
 public class UserInfoModel implements Serializable {
 
-    String uuid;
+    int uuid;
     String username;
     String nickname;
     String email;
     String phone;
-    String sex;
+    int sex;
     String birthday;
-    String lifeState;
+    int lifeState;
     String biography;
     String address;
     String headAddress;
