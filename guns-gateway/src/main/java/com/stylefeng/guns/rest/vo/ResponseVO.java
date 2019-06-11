@@ -26,34 +26,53 @@ public class ResponseVO<D> {
     // 构造方法
     public ResponseVO() {}
 
-    public static<D> ResponseVO success(int nowPage, int totalPage, String imgPre, D data) {
-        ResponseVO responseVO = new ResponseVO();
+    public static<M> ResponseVO success(int nowPage,int totalPage,String imgPre,M m){
+        ResponseVO<Object> responseVO = new ResponseVO<>();
         responseVO.setStatus(0);
-        responseVO.setData(data);
+        responseVO.setData(m);
         responseVO.setImgPre(imgPre);
-        responseVO.setTotalPage(totalPage);
         responseVO.setNowPage(nowPage);
+        responseVO.setTotalPage(totalPage);
         return responseVO;
     }
 
-    /**
-     * 业务异常返回的消息
-     */
-    public static <D> ResponseVO serviceFail(String msg){
-        ResponseVO responseVO = new ResponseVO();
+    public static<M> ResponseVO success(String imgPre,M m){
+        ResponseVO<Object> responseVO = new ResponseVO<>();
+        responseVO.setStatus(0);
+        responseVO.setData(m);
+        responseVO.setImgPre(imgPre);
+
+        return responseVO;
+    }
+
+    public static<M> ResponseVO success(M m){
+        ResponseVO<Object> responseVO = new ResponseVO<>();
+        responseVO.setStatus(0);
+        responseVO.setData(m);
+
+        return responseVO;
+    }
+
+    public static<M> ResponseVO success(String msg){
+        ResponseVO<Object> responseVO = new ResponseVO<>();
+        responseVO.setStatus(0);
+        responseVO.setMsg(msg);
+
+        return responseVO;
+    }
+
+    public static<M> ResponseVO serviceFail(String msg){
+        ResponseVO<Object> responseVO = new ResponseVO<>();
         responseVO.setStatus(1);
         responseVO.setMsg(msg);
+
         return responseVO;
     }
 
-    /**
-     * 业务成功响应的消息
-     */
-    public static<D> ResponseVO success(String imgPre,D d){
-        ResponseVO responseVO = new ResponseVO();
-        responseVO.setStatus(0);
-        responseVO.setData(d);
-        responseVO.setImgPre(imgPre);
+    public static<M> ResponseVO appFail(String msg){
+        ResponseVO<Object> responseVO = new ResponseVO<>();
+        responseVO.setStatus(999);
+        responseVO.setMsg(msg);
 
         return responseVO;
     }

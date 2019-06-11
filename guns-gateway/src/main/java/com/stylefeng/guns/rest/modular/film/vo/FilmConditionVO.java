@@ -1,4 +1,4 @@
-package com.stylefeng.guns.rest.vo;
+package com.stylefeng.guns.rest.modular.film.vo;
 
 import com.stylefeng.guns.rest.film.vo.CatVO;
 import com.stylefeng.guns.rest.film.vo.SourceVO;

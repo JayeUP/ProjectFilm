@@ -2,7 +2,9 @@ package com.stylefeng.guns.rest.common.persistence.dao;
 
 import com.stylefeng.guns.rest.common.persistence.model.MtimeFilmT;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.stylefeng.guns.rest.film.vo.FilmDetailVO;
 import com.stylefeng.guns.rest.film.vo.FilmInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,4 +31,7 @@ public interface MtimeFilmTMapper extends BaseMapper<MtimeFilmT> {
     int getSoonFilmsNum();
 
     List<FilmInfo> getSoonFilms();
+
+    FilmDetailVO getFilmDetailByName(@Param("filmName") String filmName);
+    FilmDetailVO getFilmDetailById(@Param("uuid") String uuid);
 }

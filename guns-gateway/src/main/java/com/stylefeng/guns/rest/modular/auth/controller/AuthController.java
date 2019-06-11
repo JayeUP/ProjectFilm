@@ -31,7 +31,7 @@ public class AuthController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    @Reference(interfaceClass = UserService.class)
+    @Reference(interfaceClass = UserService.class,check = false)
     private UserService userService;
 
     @RequestMapping(value = "${jwt.auth-path}")
