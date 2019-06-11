@@ -76,4 +76,20 @@ public class ResponseVO<D> {
 
         return responseVO;
     }
+
+    public static<D> ResponseVO success(String msg){
+        ResponseVO responseVO = new ResponseVO();
+        responseVO.setStatus(0);
+        responseVO.setMsg(msg);
+
+        return responseVO;
+    }
+
+    public static<D> ResponseVO success(D d){
+        ResponseVO responseVO = new ResponseVO();
+        responseVO.setStatus(0);
+        responseVO.setData(d);
+
+        return responseVO;
+    }
 }
