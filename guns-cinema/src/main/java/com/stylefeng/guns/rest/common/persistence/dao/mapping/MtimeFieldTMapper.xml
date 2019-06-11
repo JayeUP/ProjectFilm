@@ -70,7 +70,7 @@
           AND f.`UUID` = ${fieldId}
     </select>
 
-    <select id="getHallInfo" parameterType="java.lang.Integer" resultType="com.stylefeng.guns.api.cinema.vo.HallInfoVO">
+    <select id="getHallInfo" parameterType="java.lang.Integer" resultType="com.stylefeng.guns.rest.cinema.vo.HallInfoVO">
         SELECT
           f.`UUID` AS hallFieldId,
           f.`hall_name` AS hallName,
