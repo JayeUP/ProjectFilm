@@ -2,6 +2,7 @@ package com.stylefeng.guns.rest.modular.user;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
+import com.stylefeng.guns.rest.common.CurrentUser;
 import com.stylefeng.guns.rest.config.properties.JwtProperties;
 import com.stylefeng.guns.rest.modular.auth.util.JwtTokenUtil;
 import com.stylefeng.guns.rest.persistence.UserService;
@@ -122,6 +123,48 @@ public class UserController {
     public Map updateUserInfo(UserInfoModel userInfo) {
         HashMap map = new HashMap();
 
+        String userId = CurrentUser.getCurrentUser();
+        if (userId != null && !"".equals(userId)) {
+            int uuid = Integer.parseInt(userId);
+            userInfo.setUuid(uuid);
+        }
+
+        UserInfoModel update = userService.updateUserInfo(userInfo);
+
+        if (update != null) {
+            map.put("status", 0);
+            map.put("data", update);
+        } else {
+            map.put("status", 1);
+            map.put("msg", "用户信息修改失败");
+        }
+
         return map;
     }
+
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @ResponseBody
+    public Map logout(HttpServletRequest request, HttpServletResponse response) {
+        HashMap map = new HashMap();
+
+        String header = request.getHeader(jwtProperties.getHeader());
+        String authToken = null;
+
+        // System.out.println(header);
+
+        if (header != null && header.startsWith("Bearer ")) {
+            authToken = header.substring(7);
+        }
+
+        String usernameFromToken = jwtTokenUtil.getUsernameFromToken(authToken);
+
+
+        map.put("status", 0);
+        map.put("msg", "成功退出");
+
+
+        return map;
+    }
+
 }

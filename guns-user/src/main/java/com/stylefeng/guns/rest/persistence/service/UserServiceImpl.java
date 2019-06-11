@@ -80,7 +80,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfoModel updateUserInfo(UserInfoModel userInfoModel) {
-        return null;
+        MtimeUserT mtimeUserT = new MtimeUserT();
+        mtimeUserT.setUuid(userInfoModel.getUuid());
+        mtimeUserT.setNickName(userInfoModel.getNickname());
+        mtimeUserT.setEmail(userInfoModel.getEmail());
+        mtimeUserT.setUserPhone(userInfoModel.getPhone());
+        mtimeUserT.setUserSex(userInfoModel.getSex());
+        mtimeUserT.setBirthday(userInfoModel.getBirthday());
+        mtimeUserT.setLifeState(userInfoModel.getLifeState());
+        mtimeUserT.setBiography(userInfoModel.getBiography());
+        mtimeUserT.setAddress(userInfoModel.getAddress());
+
+        Integer integer = userMapper.updateById(mtimeUserT);
+
+        if (integer == 0) {
+            return null;
+        } else {
+            return getUserInfo(mtimeUserT.getUuid());
+        }
+
+
     }
 
     @Override
