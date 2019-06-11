@@ -11,7 +11,7 @@ jwt:
 
 #端口号从8080开始，dubbo的微服务端口从20880开始
 server:
-  port: 8080 #项目端口
+  port: 8081 #项目端口
 
 mybatis-plus:
   mapper-locations: classpath*:com/stylefeng/guns/rest/**/mapping/*.xml
